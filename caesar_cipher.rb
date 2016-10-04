@@ -1,7 +1,7 @@
 def caesar_cipher(string, shift)
 	alphabet = ('a'..'z').to_a
 	letters = string.split("")
-    letters.collect! do |letter|
+    	letters.collect! do |letter|
 		if letter != " "
 			index = alphabet.index(letter.downcase)
 			if /[A-Z]/.match(letter) != nil
@@ -9,11 +9,11 @@ def caesar_cipher(string, shift)
 			else
 				letter = alphabet[index-shift]
 			end
-        else
-          letter = " "
+        	else
+          		letter = " "
 		end
 	end
-    word = letters.join
+        word = letters.join
 	puts word
 end
 caesar_cipher("THis is A lonGer StrINg",8)
