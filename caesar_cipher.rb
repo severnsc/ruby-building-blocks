@@ -16,4 +16,4 @@ def caesar_cipher(string, shift)
         word = letters.join
 	puts word
 end
-caesar_cipher("THis is A lonGer StrINg",8)
+caesar_cipher("Forescore and seven years ago",11)
