@@ -86,9 +86,7 @@ module Enumerable
 
 	def my_map *proc
 		new_a = []
-		if procs.my_count > 1
-			raise ArgumentError
-		end
+		raise ArgumentError if procs.my_count > 1
 		if proc.class == Proc
 			self.my_each do |a|
 				result = proc.call(a)

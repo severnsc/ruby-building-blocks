@@ -7,7 +7,7 @@ def crack_cipher cipher
 	i=0
 	i_shift = 0
 	while i_shift == 0
-		if characters_in_cipher[i] == characters_in_cipher[0]
+		if i==0
 			if characters_in_cipher[1] == " "
 				i_shift = alphabet.index(characters_in_cipher[i]) - 8
 				a_shift = alphabet.index(characters_in_cipher[i])
@@ -15,6 +15,11 @@ def crack_cipher cipher
 		elsif characters_in_cipher[i-1] == " " && characters_in_cipher[i+1] == " "
 			i_shift = alphabet.index(characters_in_cipher[i])-8
 			a_shift = alphabet.index(characters_in_cipher[i])
+		elsif i == characters_in_cipher.length-1
+			if characters_in_cipher[-2] == " "
+				i_shift = alphabet.index(characters_in_cipher[i])-8
+				a_shift = alphabet.index(characters_in_cipher[i])
+			end
 		end
 		i+=1
 	end
@@ -38,12 +43,4 @@ def crack_cipher cipher
 	end_time = Time.now
 	puts "Operation took #{end_time-start} seconds"
 end
-crack_cipher "Ntpgh pvd, X phzts upqats sxgtri bpgztitg Ydt Hjvpgbpc pqdji iwt bdctn-qprz vjpgpcitt wt duutgts dc iwt hijuu wt hdas iwgdjvw bpvpoxct psh. Wt hpxs 10% du iwt etdeat lwd qdjvwi phzts udg iwtxg bdctn qprz... pcs xu pcn egdsjri sxeets qtadl 10%, wt's bpzt iwt rapxbh bdgt djigpvtdjh jcixa xi vdi qprz je. Wt idas bt iwpi iwxh lph p hltti hedi, hdbtlwtgt qtilttc pbpoxcv etdeat lxiw egdbxhth pcs sxhpeedxcixcv iwtb lxiw gtpaxin.
-
-Iwpi'h dct epiw.
-
-Iwt diwtg epiw xh iwt xchjgpcrt rdbepcn iwpi edxcih dji iwpi 99% du xih rjhidbtgh ldjas gtrdbbtcs iwtb--puitg uxaxcv p rapxb. Xbpvxct iwpi hipcspgs: stpaxcv lxiw iwt tbdixdch pcs uxcpcrxpa xbepri du pc xchjgpcrt rapxb, zcdlxcv iwpi ndj ctts id bpxcipxc p 99% staxvwi hipcspgs.
-
-Iwpi'h iwt diwtg epiw.
-
-Ndj rpc'i sd qdiw. Txiwtg ndj spooat lxiw ph bjrw wnet ph ndj rpc vti plpn lxiw, dg ndj xckthi xc staxvwixcv etdeat, gtvpgsathh du wdl sxuuxrjai xi xh."
+crack_cipher "Bt bnhtau pcs X"
