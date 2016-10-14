@@ -26,7 +26,7 @@ class TicTacToe
 			@board.squares[square.to_i] = @current_player.symbol
 			@board.show_board
 			check_if_game_over
-			@current_player == @player1 ? @current_player = @player2 : @current_player = player1
+			@current_player == @player1 ? @current_player = @player2 : @current_player = @player1
 		end
 		puts "Do you want to play again? Enter Yes or No"
 		play_again = gets.chomp
