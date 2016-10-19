@@ -14,9 +14,7 @@ class Game
 		@board = Board.new
 		@guesses = 12
 		@correct = 0
-		until @guesses == 0 || @correct == 4
-			play_turn
-		end
+		play_turn until @guesses == 0 || @correct == 4
 		if @guesses == 0 && @correct != 4
 			puts "Game over! You lose!"
 			play_again?
@@ -37,9 +35,7 @@ class Game
 	def play_again?
 		puts "Do you want to play again? Type Yes or No"
 		@answer = gets.chomp.downcase
-		if @answer == "yes"
-			play_game
-		end
+		play_game if @answer == "yes"
 	end
 
 end

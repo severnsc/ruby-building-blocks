@@ -5,9 +5,7 @@ class Board
 		@master_row = []
 		4.times {@master_row.push(colors[rand(6)])}
 		@master_colors = Hash.new{0}
-		@master_row.each do |color|
-			@master_colors[color] += 1
-		end
+		@master_row.each {|color| @master_colors[color] += 1}
 	end
 
 	def feedback(guess)
@@ -21,17 +19,11 @@ class Board
 		end
 		guess.each_with_index do |g, index|
 			if @feedback[index] != "X"
-				if @correct[g] < @master_colors[g]
-					@feedback[index] = "O"
-				else
-					@feedback[index] = "Wrong"
-				end
+				@correct[g] < @master_colors[g] ? @feedback[index] = "O" : @feedback[index] = "Wrong"
 			end
 		end
 		puts "\n"
-		@feedback.each do |f|
-			puts f
-		end
+		@feedback.each {|f| puts f}
 		@correct.values.inject(0) {|sum, i| sum + i}
 	end
 end
