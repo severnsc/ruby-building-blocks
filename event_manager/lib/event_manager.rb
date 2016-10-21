@@ -1,6 +1,7 @@
 require 'csv'
 require 'sunlight/congress'
 require 'erb'
+require 'date'
 
 template_letter = File.read "form_letter.erb.html"
 erb_template = ERB.new template_letter
@@ -22,13 +23,8 @@ def clean_phone_number(phone_number)
 	end
 end
 
-def find_hour(datetime)
+def datetime(datetime)
 	datetime = DateTime.strptime(datetime, '%m/%d/%Y %H:%M')
-	if datetime.hour > 12
-		"#{datetime.hour - 12} pm"
-	else
-		"#{datetime.hour} am"
-	end
 end
 
 def legislators_by_zipcode(zipcode)
@@ -44,7 +40,8 @@ def save_thank_you_letters(id, form_letter)
 		file.puts form_letter
 	end
 end
-
+most_popular_hour = Hash.new(0)
+most_popular_day = Hash.new(0)
 contents = CSV.open "event_attendees.csv", headers: true, header_converters: :symbol
 contents.each do |row|
 	id = row[0]
@@ -55,7 +52,11 @@ contents.each do |row|
 
 	phone_number = clean_phone_number(row[:homephone])
 
-	time = find_hour(row[:regdate])
+	reg_datetime = datetime(row[:regdate])
+
+	most_popular_hour[reg_datetime.hour] += 1
+
+	most_popular_day[Date::DAYNAMES[reg_datetime.wday]] += 1 
 
 	legislators = legislators_by_zipcode(zipcode)
 
@@ -63,3 +64,5 @@ contents.each do |row|
 
 	save_thank_you_letters(id, form_letter)
 end
+puts "The most popular hour is #{most_popular_hour.max_by{|k, v| v}[0]}" 
+puts "The most popular day is #{most_popular_day.max_by{|k,v| v}[0]}"
