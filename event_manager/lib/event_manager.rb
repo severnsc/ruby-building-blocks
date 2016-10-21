@@ -12,13 +12,22 @@ def clean_zipcode(zipcode)
 end
 
 def clean_phone_number(phone_number)
-	phone_number = phone_number.to_s
-	if phone_number.length < 10
-		phone_number.rjust(10,"0")[0..9]
-	elsif phone_number.length == 11 && phone_number[0] == "1"
-		phone_number[1..10]
+	number = phone_number.to_s.gsub(/\D/,"")
+	if number.length < 10
+		number.rjust(10,"0")[0..9]
+	elsif number.length == 11 && number[0] == 1
+		number[1..10]
 	else
-		phone_number.rjust[0..9]
+		number[0..9]
+	end
+end
+
+def find_hour(datetime)
+	datetime = DateTime.strptime(datetime, '%m/%d/%Y %H:%M')
+	if datetime.hour > 12
+		"#{datetime.hour - 12} pm"
+	else
+		"#{datetime.hour} am"
 	end
 end
 
@@ -44,7 +53,9 @@ contents.each do |row|
 
 	zipcode = clean_zipcode(row[:zipcode])
 
-	phone_number = clean_phone_number(row[:HomePhone])
+	phone_number = clean_phone_number(row[:homephone])
+
+	time = find_hour(row[:regdate])
 
 	legislators = legislators_by_zipcode(zipcode)
 
