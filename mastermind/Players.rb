@@ -15,7 +15,4 @@ class Player
 		@guess
 	end
 
-	def set_master_row
-	end
-
 end
