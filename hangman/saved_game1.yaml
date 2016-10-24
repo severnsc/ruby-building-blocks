@@ -1,0 +1,28 @@
+--- &1 !ruby/object:Game
+player: !ruby/object:Player
+  name: Chris
+  guess: save
+game: *1
+secret_word: umiak
+guesses: 4
+letters_guessed:
+- e
+- r
+- s
+- l
+- t
+- n
+- a
+letters:
+- u
+- m
+- i
+- a
+- k
+feedback:
+- _
+- _
+- _
+- a
+- _
+guess: save

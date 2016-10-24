@@ -1,0 +1,31 @@
+--- !ruby/object:Game
+player: !ruby/object:Player
+  name: Chris
+  guess: save
+secret_word: livre
+guesses: 4
+letters_guessed:
+- e
+- s
+- t
+- l
+- n
+- r
+- o
+- a
+- y
+- i
+letters:
+- l
+- i
+- v
+- r
+- e
+feedback:
+- l
+- i
+- _
+- r
+- e
+guess: save
+save_name: test

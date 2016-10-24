@@ -1,0 +1,26 @@
+--- &1 !ruby/object:Game
+player: !ruby/object:Player
+  name: Chris
+  guess: save
+game: *1
+secret_word: orwell
+guesses: 9
+letters_guessed:
+- e
+- r
+- s
+letters:
+- o
+- r
+- w
+- e
+- l
+- l
+feedback:
+- _
+- r
+- _
+- e
+- _
+- _
+guess: save
