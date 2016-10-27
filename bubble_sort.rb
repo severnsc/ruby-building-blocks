@@ -1,4 +1,5 @@
 def bubble_sort array
+	start = Time.now
 	passes = 1
 	not_sorted = true
 	while not_sorted
@@ -17,6 +18,8 @@ def bubble_sort array
 		passes+=1
 	end
 	print array
+	finish = Time.now
+	puts "Process took #{finish-start} seconds"
 end
 
 def bubble_sort_by array
@@ -39,8 +42,4 @@ def bubble_sort_by array
 		passes+=1
 	end
 	print array
-end
-
-bubble_sort_by(["hi","hello","hey"]) do |left,right|
-	left.length-right.length
 end
