@@ -74,3 +74,37 @@ def breadth_first_search(value, root)
 	end
 	found_node
 end
+
+def depth_first_search(value, root)
+	nodes_to_search = [root]
+	found_node = nil
+	#Discover Left side of tree
+	current_node = root
+	while current_node.left_child
+		current_node = current_node.left_child
+		nodes_to_search.push(current_node)
+	end
+	#Search left side of tree using Inorder
+	until found_node || nodes_to_search.empty?
+		current_node = nodes_to_search.pop
+		if current_node.left_child && current_node.left_child.value == value
+			found_node = current_node.left_child
+		elsif current_node.value == value
+			found_node = current_node
+		elsif current_node.right_child && current_node.right_child.value == value
+			found_node = current_node.right_child
+		elsif current_node.right_child
+			nodes_to_search.push(current_node.right_child)
+		end
+	end
+	found_node
+end
+
+def dfs_rec(value, root)
+	found_node = nil
+	found_node = dfs_rec(value, root.left_child) if root.left_child
+	return found_node if found_node
+	return root if root.value == value
+	found_node = dfs_rec(value, root.right_child) if root.right_child
+	found_node
+end
