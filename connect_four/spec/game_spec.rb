@@ -43,10 +43,6 @@ describe Game do
 			expect{@game.play_turn("A")}.to output.to_stdout
 		end
 
-		it "asks the current player where they want to drop their piece" do
-			expect{@game.play_turn("A")}.to output.to_stdout
-		end
-
 		context "when there's no pieces in the column" do
 			before(:all) do
 				@game.instance_variable_set(:@current_player, @player1)

@@ -15,8 +15,6 @@ class Game
 	end
 
 	def play_turn(move)
-		@board.display
-		puts "#{@current_player.name}, which column do you want to drop your piece into?"
 		until @board.x_values.include?(move)
 			puts "That's not a valid selection! Choose again."
 			move = gets.chomp.upcase
@@ -32,6 +30,7 @@ class Game
 			move = squares_to_check.pop
 		end
 		@board.spaces[move] = @current_player.color
+		@board.display
 		@current_player == @player1 ? @current_player = @player2 : @current_player = @player1 unless game_over?	
 	end
 
